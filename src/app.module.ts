@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Todos } from './todos/entities/todos.entity';
+import { TodosModules } from './todos/todos.module';
 
 @Module({
   imports: [
@@ -12,11 +12,13 @@ import { AppService } from './app.service';
       username: 'root',
       password: 'root',
       database: 'db_todo',
-      entities:[],
+      entities:[Todos],
       synchronize: true
-    })
+    }),
+    TodosModules
+   
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
